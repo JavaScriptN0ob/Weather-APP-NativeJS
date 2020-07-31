@@ -1,0 +1,19 @@
+{
+  "name": "NativeJSVersion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "browserify": "^16.5.1",
+    "webpack": "^4.44.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify ./script/weather.js -o ./script/bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

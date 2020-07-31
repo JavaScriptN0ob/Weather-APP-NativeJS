@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/weather.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <title>Weather Wenpei Z</title>
+</head>
+<body>
+  <div class="weather__background">
+    <div class="weather__search">
+      <div>
+        <label for="city">Enter city name:</label>
+        <input id="city">
+      </div>
+      <div>
+        <label for="country">Enter country:</label>
+        <input id="country">
+      </div>
+      <button type="button" class="search">Search</button>
+    </div>
+    <div class="weather__loading hidden">
+      Loading..... Please Wait
+    </div>
+    <div class="weather__container">
+      <div class="weather_top">
+        <div class="weather__current">
+          <div class="current__temp_weather">
+            <div class="temp_weather__temp">12</div>
+            <div class="temp_weather__weather">CLOUDY</div>
+          </div>
+          <div class="current__humidity_wind">
+            <div class="humidity_wind">
+              <div class="humidity_wind__title">HUMIDITY</div>
+              <div class="humidity_wind__value current__humidity">64%</div>
+            </div>
+            <div class="humidity_wind__divider"></div>
+            <div class="humidity_wind">
+              <div class="humidity_wind__title">WIND</div>
+              <div class="humidity_wind__value current__wind">12K/M</div>
+            </div>
+          </div>
+        </div>
+        <div class="weather__city">
+          <div class="city__name">FRANCE</div>
+        </div>
+      </div>
+      <div class="weather__divider"></div>
+      <div class="weather_bottom">
+        <div class="weather__news">news</div>
+        <div class="weather_bottom__divider"></div>
+        <div class="weather__forecast">
+          <div class="forecast day-one">
+            <div class="forecast__day">MON</div>
+            <div class="forecast__icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+            <div class="forecast__temp">9</div>
+            <div class="forecast__weather">RAINING</div>
+          </div>
+          <div class="forecast day-two">
+            <div class="forecast__day">TUE</div>
+            <div class="forecast__icon"><i class="fas fa-sun"></i></div>
+            <div class="forecast__temp">15</div>
+            <div class="forecast__weather">SUNNY</div>
+          </div>
+          <div class="forecast day-three">
+            <div class="forecast__day">WED</div>
+            <div class="forecast__icon"><i class="fas fa-cloud-sun"></i></div>
+            <div class="forecast__temp">11</div>
+            <div class="forecast__weather">CLOUDY</div>
+          </div>
+          <div class="forecast day-four">
+            <div class="forecast__day">THU</div>
+            <div class="forecast__icon"><i class="fas fa-poo-storm"></i></div>
+            <div class="forecast__temp">7</div>
+            <div class="forecast__weather">STORM</div>
+          </div>
+          <div class="forecast day-five">
+            <div class="forecast__day">FRI</div>
+            <div class="forecast__icon"><i class="fas fa-sun"></i></div>
+            <div class="forecast__temp">18</div>
+            <div class="forecast__weather">SUNNY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <script type="module" src="./script/bundle.js"></script>
+  </footer>
+</body>
+</html>
