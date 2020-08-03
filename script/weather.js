@@ -99,18 +99,24 @@ function updateWeather(currentWeatherInput, forecastWeatherInput) {
 
 function setForecast(forecast) {
   const { dayOne, dayTwo, dayThree, dayFour, dayFive } = forecastList;
+  const today = new Date().getDay();
+  dayOne.children[0].innerHTML = updateDay(today)
   dayOne.children[1].innerHTML = `<img src="${updateIcons(forecast[3].weatherID)}" />`
   dayOne.children[2].innerHTML = Math.round(forecast[3].maxCelsius);
   dayOne.children[3].innerHTML = forecast[3].weather;
+  dayTwo.children[0].innerHTML = updateDay(today + 1);
   dayTwo.children[1].innerHTML = `<img src="${updateIcons(forecast[11].weatherID)}" />`
   dayTwo.children[2].innerHTML = Math.round(forecast[11].maxCelsius);
   dayTwo.children[3].innerHTML = forecast[11].weather;
+  dayThree.children[0].innerHTML = updateDay(today + 2);
   dayThree.children[1].innerHTML = `<img src="${updateIcons(forecast[19].weatherID)}" />`
   dayThree.children[2].innerHTML = Math.round(forecast[19].maxCelsius);
   dayThree.children[3].innerHTML = forecast[19].weather;
+  dayFour.children[0].innerHTML = updateDay(today + 3);
   dayFour.children[1].innerHTML = `<img src="${updateIcons(forecast[27].weatherID)}" />`
   dayFour.children[2].innerHTML = Math.round(forecast[27].maxCelsius);
   dayFour.children[3].innerHTML = forecast[27].weather;
+  dayFive.children[0].innerHTML = updateDay(today + 4);
   dayFive.children[1].innerHTML = `<img src="${updateIcons(forecast[35].weatherID)}" />`
   dayFive.children[2].innerHTML = Math.round(forecast[35].maxCelsius);
   dayFive.children[3].innerHTML = forecast[35].weather;
@@ -158,6 +164,21 @@ function updateIcons(id) {
     }
   }
 }
+
+function updateDay(dayIndex) {
+  const dayName = {
+    1: "MON", 
+    2: "TUE", 
+    3: "WED", 
+    4: "THU", 
+    5: "FRI", 
+    6: "SAT", 
+    7: "SUN"
+  };
+  return dayName[dayIndex];
+}
+
+console.log(updateDay())
 
 search.addEventListener('click', () => {
   searchWeather();
