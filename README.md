@@ -4,7 +4,8 @@
 
 #### Update on 03/08/2020:
   1. using declarative Function & data injection to replace old function<br>
-          ``` js
+          ``` 
+          
           const openWeatherIconURL = [
             {
               min: 0,
@@ -23,7 +24,7 @@
                 4: 'http://openweathermap.org/img/wn/04d@2x.png',
               },
             },]
-          ```  
+ 
           function updateIcons(id, weatherURL) {
             for (let i = 0; i < weatherURL.length; i++) {
               if (id < 800) {
@@ -37,7 +38,8 @@
           }
           ```
   2. Using async function & await method to replace promise.then(cb()) for a better code reading, looking and response speed.
-          ```js
+          ```
+          
           function getCurrent(cityName, countryName) { 
             //...
             return axios(config)
@@ -48,8 +50,7 @@
               console.log(error);
             });
           }
-          ```
-          ```
+
           const weatherCurrentData = await getCurrent(cityName, countryName);
           const weatherForecastData = await getForecast(cityName, countryName);
           updateWeather(weatherCurrentData, weatherForecastData);
