@@ -4,8 +4,7 @@
 
 #### Update on 03/08/2020:
   1. using declarative Function & data injection to replace old function<br>
-          ``` 
-          
+       
           const openWeatherIconURL = [
             {
               min: 0,
@@ -36,9 +35,8 @@
               return weatherURL[7].url[id - 800]
             }
           }
-          ```
+         
   2. Using async function & await method to replace promise.then(cb()) for a better code reading, looking and response speed.
-          ```
           
           function getCurrent(cityName, countryName) { 
             //...
@@ -54,4 +52,5 @@
           const weatherCurrentData = await getCurrent(cityName, countryName);
           const weatherForecastData = await getForecast(cityName, countryName);
           updateWeather(weatherCurrentData, weatherForecastData);
-          ```
+          
+ Next update will be after few days, I will rewrite this webpage by React.
