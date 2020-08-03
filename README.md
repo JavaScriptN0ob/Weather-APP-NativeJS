@@ -4,7 +4,7 @@
 
 #### Update on 03/08/2020:
   1. using declarative Function & data injection to replace old function<br>
-          ```js
+          ``` js
           const openWeatherIconURL = [
             {
               min: 0,
@@ -23,7 +23,8 @@
                 4: 'http://openweathermap.org/img/wn/04d@2x.png',
               },
             },]
-            
+          ```
+          ```  
           function updateIcons(id, weatherURL) {
             for (let i = 0; i < weatherURL.length; i++) {
               if (id < 800) {
@@ -48,7 +49,8 @@
               console.log(error);
             });
           }
-          
+          ```
+          ```
           const weatherCurrentData = await getCurrent(cityName, countryName);
           const weatherForecastData = await getForecast(cityName, countryName);
           updateWeather(weatherCurrentData, weatherForecastData);
