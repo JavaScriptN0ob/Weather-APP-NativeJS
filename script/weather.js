@@ -33,7 +33,7 @@ function getCurrent(cityName, countryName) {
     headers: { }
   };
 
-  axios(config)
+  return axios(config)
   .then((response) => {
     weatherCurrentData = response.data;
     return weatherCurrentData;
@@ -50,7 +50,7 @@ function getForecast(cityName, countryName) {
     headers: { }
   };
 
-  axios(config)
+  return axios(config)
   .then((response) => {
     weatherForecastData = response.data;
     return weatherForecastData;
@@ -60,7 +60,7 @@ function getForecast(cityName, countryName) {
   });
 }
 
-function searchWeather() {
+async function searchWeather() {
   const { countryNameField, cityNameField } = weather;
   let cityName = cityNameField.value;
   let countryName = countryNameField.value;
@@ -69,13 +69,14 @@ function searchWeather() {
   }
   console.log(cityName);
   console.log(countryName);
-  getCurrent(cityName, countryName);
-  getForecast(cityName, countryName);
-  setTimeout(() => updateWeather(weatherCurrentData, weatherForecastData), 3000);
+  const weatherCurrentData = await getCurrent(cityName, countryName);
+  const weatherForecastData = await getForecast(cityName, countryName);
+  updateWeather(weatherCurrentData, weatherForecastData);
 }
 
 function updateWeather(currentWeatherInput, forecastWeatherInput) {
   const { currentTemp, currentWeather, currentHumidity, currentWind, city_name, loading } = weather;
+
   if(!currentWeatherInput || !forecastWeatherInput) {
     console.log('error');
   }
