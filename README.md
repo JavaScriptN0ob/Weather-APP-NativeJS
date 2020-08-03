@@ -48,6 +48,7 @@
               console.log(error);
             });
           }
+          
           const weatherCurrentData = await getCurrent(cityName, countryName);
           const weatherForecastData = await getForecast(cityName, countryName);
           updateWeather(weatherCurrentData, weatherForecastData);
