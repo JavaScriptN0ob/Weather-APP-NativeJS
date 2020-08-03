@@ -23,6 +23,7 @@
                 4: 'http://openweathermap.org/img/wn/04d@2x.png',
               },
             },]
+            
           function updateIcons(id, weatherURL) {
             for (let i = 0; i < weatherURL.length; i++) {
               if (id < 800) {
