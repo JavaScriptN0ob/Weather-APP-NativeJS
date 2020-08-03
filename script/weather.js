@@ -165,49 +165,60 @@ const openWeatherIconURL = [
     url: 'http://openweathermap.org/img/wn/50d@2x.png',
   },
   {
+    min: 700,
+    max: 799,
+    url: 'http://openweathermap.org/img/wn/50d@2x.png',
+  },
+  {
+    min: 799,
+    max: 800,
+    url: 'http://openweathermap.org/img/wn/01d@2x.png',
+  },
+  {
     min: 800,
-    max: 804,
-    url: {
-      0: 'http://openweathermap.org/img/wn/01d@2x.png',
-      1: 'http://openweathermap.org/img/wn/02d@2x.png',
-      2: 'http://openweathermap.org/img/wn/03d@2x.png',
-      3: 'http://openweathermap.org/img/wn/04d@2x.png',
-      4: 'http://openweathermap.org/img/wn/04d@2x.png',
-    },
+    max: 801,
+    url: 'http://openweathermap.org/img/wn/02d@2x.png',
+  },
+  {
+    min: 801,
+    max: 802,
+    url: 'http://openweathermap.org/img/wn/03d@2x.png',
+  },
+  {
+    min: 802,
+    max: 805,
+    url: 'http://openweathermap.org/img/wn/04d@2x.png',
   },
 ]
 
 function updateIcons(id, weatherURL) {
   for (let i = 0; i < weatherURL.length; i++) {
-    if (id < 800) {
+    for (let i = 0; i < weatherURL.length; i++) {
       if (id > weatherURL[i].min && id > weatherURL[i].max) {
         continue;
       }
       
       return weatherURL[i].url
     }
-
-    return weatherURL[7].url[id - 800]
   }
 }
 
-console.log('url200:', updateIcons(200, openWeatherIconURL));
-console.log('url232:', updateIcons(232, openWeatherIconURL));
-console.log('url300:', updateIcons(300, openWeatherIconURL));
-console.log('url321:', updateIcons(321, openWeatherIconURL));
-console.log('url500:', updateIcons(500, openWeatherIconURL));
-console.log('url511:', updateIcons(511, openWeatherIconURL));
-console.log('url531:', updateIcons(531, openWeatherIconURL));
-console.log('url600:', updateIcons(600, openWeatherIconURL));
-console.log('url622:', updateIcons(622, openWeatherIconURL));
-console.log('url701:', updateIcons(701, openWeatherIconURL));
-console.log('url781:', updateIcons(781, openWeatherIconURL));
-console.log('url800:', updateIcons(800, openWeatherIconURL));
-console.log('url801:', updateIcons(801, openWeatherIconURL));
-console.log('url802:', updateIcons(802, openWeatherIconURL));
-console.log('url803:', updateIcons(803, openWeatherIconURL));
-console.log('url804:', updateIcons(804, openWeatherIconURL));
-
+// console.log('url200:', updateIcons(200, openWeatherIconURL));
+// console.log('url232:', updateIcons(232, openWeatherIconURL));
+// console.log('url300:', updateIcons(300, openWeatherIconURL));
+// console.log('url321:', updateIcons(321, openWeatherIconURL));
+// console.log('url500:', updateIcons(500, openWeatherIconURL));
+// console.log('url511:', updateIcons(511, openWeatherIconURL));
+// console.log('url531:', updateIcons(531, openWeatherIconURL));
+// console.log('url600:', updateIcons(600, openWeatherIconURL));
+// console.log('url622:', updateIcons(622, openWeatherIconURL));
+// console.log('url701:', updateIcons(701, openWeatherIconURL));
+// console.log('url781:', updateIcons(781, openWeatherIconURL));
+// console.log('url800:', updateIcons(800, openWeatherIconURL));
+// console.log('url801:', updateIcons(801, openWeatherIconURL));
+// console.log('url802:', updateIcons(802, openWeatherIconURL));
+// console.log('url803:', updateIcons(803, openWeatherIconURL));
+// console.log('url804:', updateIcons(804, openWeatherIconURL));
 
 function updateDay(dayIndex) {
   const dayName = {
