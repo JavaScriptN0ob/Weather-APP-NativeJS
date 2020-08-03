@@ -101,23 +101,23 @@ function setForecast(forecast) {
   const { dayOne, dayTwo, dayThree, dayFour, dayFive } = forecastList;
   const today = new Date().getDay();
   dayOne.children[0].innerHTML = updateDay(today)
-  dayOne.children[1].innerHTML = `<img src="${updateIcons(forecast[3].weatherID)}" />`
+  dayOne.children[1].innerHTML = `<img src="${updateIcons(forecast[3].weatherID, openWeatherIconURL)}" />`
   dayOne.children[2].innerHTML = Math.round(forecast[3].maxCelsius);
   dayOne.children[3].innerHTML = forecast[3].weather;
   dayTwo.children[0].innerHTML = updateDay(today + 1);
-  dayTwo.children[1].innerHTML = `<img src="${updateIcons(forecast[11].weatherID)}" />`
+  dayTwo.children[1].innerHTML = `<img src="${updateIcons(forecast[11].weatherID, openWeatherIconURL)}" />`
   dayTwo.children[2].innerHTML = Math.round(forecast[11].maxCelsius);
   dayTwo.children[3].innerHTML = forecast[11].weather;
   dayThree.children[0].innerHTML = updateDay(today + 2);
-  dayThree.children[1].innerHTML = `<img src="${updateIcons(forecast[19].weatherID)}" />`
+  dayThree.children[1].innerHTML = `<img src="${updateIcons(forecast[19].weatherID, openWeatherIconURL)}" />`
   dayThree.children[2].innerHTML = Math.round(forecast[19].maxCelsius);
   dayThree.children[3].innerHTML = forecast[19].weather;
   dayFour.children[0].innerHTML = updateDay(today + 3);
-  dayFour.children[1].innerHTML = `<img src="${updateIcons(forecast[27].weatherID)}" />`
+  dayFour.children[1].innerHTML = `<img src="${updateIcons(forecast[27].weatherID, openWeatherIconURL)}" />`
   dayFour.children[2].innerHTML = Math.round(forecast[27].maxCelsius);
   dayFour.children[3].innerHTML = forecast[27].weather;
   dayFive.children[0].innerHTML = updateDay(today + 4);
-  dayFive.children[1].innerHTML = `<img src="${updateIcons(forecast[35].weatherID)}" />`
+  dayFive.children[1].innerHTML = `<img src="${updateIcons(forecast[35].weatherID, openWeatherIconURL)}" />`
   dayFive.children[2].innerHTML = Math.round(forecast[35].maxCelsius);
   dayFive.children[3].innerHTML = forecast[35].weather;
 }
@@ -127,43 +127,87 @@ function setLoading() {
   loading.classList.remove('hidden');
 }
 
-function updateIcons(id) {
-  if (id < 300) {
-    return 'http://openweathermap.org/img/wn/11d@2x.png';
-  }
-  else if (id < 400) {
-    return 'http://openweathermap.org/img/wn/09d@2x.png';
-  }
-  else if (id < 600) {
-    if(id < 505) {
-      return 'http://openweathermap.org/img/wn/10d@2x.png';
+
+const openWeatherIconURL = [
+  {
+    min: 0,
+    max: 299,
+    url: 'http://openweathermap.org/img/wn/11d@2x.png',
+  },
+  {
+    min: 300,
+    max: 400,
+    url: 'http://openweathermap.org/img/wn/09d@2x.png',
+  },
+  {
+    min: 401,
+    max: 505,
+    url: 'http://openweathermap.org/img/wn/10d@2x.png',
+  },
+  {
+    min: 506,
+    max: 519,
+    url: 'http://openweathermap.org/img/wn/13d@2x.png',
+  },
+  {
+    min: 520,
+    max: 599,
+    url: 'http://openweathermap.org/img/wn/09d@2x.png',
+  },
+  {
+    min: 600,
+    max: 699,
+    url: 'http://openweathermap.org/img/wn/13d@2x.png',
+  },
+  {
+    min: 700,
+    max: 799,
+    url: 'http://openweathermap.org/img/wn/50d@2x.png',
+  },
+  {
+    min: 800,
+    max: 804,
+    url: {
+      0: 'http://openweathermap.org/img/wn/01d@2x.png',
+      1: 'http://openweathermap.org/img/wn/02d@2x.png',
+      2: 'http://openweathermap.org/img/wn/03d@2x.png',
+      3: 'http://openweathermap.org/img/wn/04d@2x.png',
+      4: 'http://openweathermap.org/img/wn/04d@2x.png',
+    },
+  },
+]
+
+function updateIcons(id, weatherURL) {
+  for (let i = 0; i < weatherURL.length; i++) {
+    if (id < 800) {
+      if (id > weatherURL[i].min && id > weatherURL[i].max) {
+        continue;
+      }
+      
+      return weatherURL[i].url
     }
-    else if (id < 520) {
-      return 'http://openweathermap.org/img/wn/13d@2x.png';
-    }
-    return 'http://openweathermap.org/img/wn/09d@2x.png';
-  }
-  else if (id < 700) {
-    return 'http://openweathermap.org/img/wn/13d@2x.png';
-  }
-  else if (id < 800) {
-    return 'http://openweathermap.org/img/wn/50d@2x.png';
-  }
-  else if (id >= 800) {
-    switch(id) {
-      case(800):
-        return 'http://openweathermap.org/img/wn/01d@2x.png';
-      case(801):
-        return 'http://openweathermap.org/img/wn/02d@2x.png';
-      case(802):
-        return 'http://openweathermap.org/img/wn/03d@2x.png';
-      case(803):
-        return 'http://openweathermap.org/img/wn/04d@2x.png';
-      case(804):
-        return 'http://openweathermap.org/img/wn/04d@2x.png';
-    }
+
+    return weatherURL[7].url[id - 800]
   }
 }
+
+console.log('url200:', updateIcons(200, openWeatherIconURL));
+console.log('url232:', updateIcons(232, openWeatherIconURL));
+console.log('url300:', updateIcons(300, openWeatherIconURL));
+console.log('url321:', updateIcons(321, openWeatherIconURL));
+console.log('url500:', updateIcons(500, openWeatherIconURL));
+console.log('url511:', updateIcons(511, openWeatherIconURL));
+console.log('url531:', updateIcons(531, openWeatherIconURL));
+console.log('url600:', updateIcons(600, openWeatherIconURL));
+console.log('url622:', updateIcons(622, openWeatherIconURL));
+console.log('url701:', updateIcons(701, openWeatherIconURL));
+console.log('url781:', updateIcons(781, openWeatherIconURL));
+console.log('url800:', updateIcons(800, openWeatherIconURL));
+console.log('url801:', updateIcons(801, openWeatherIconURL));
+console.log('url802:', updateIcons(802, openWeatherIconURL));
+console.log('url803:', updateIcons(803, openWeatherIconURL));
+console.log('url804:', updateIcons(804, openWeatherIconURL));
+
 
 function updateDay(dayIndex) {
   const dayName = {
